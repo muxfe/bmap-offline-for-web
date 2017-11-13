@@ -2850,8 +2850,10 @@ window.BMAP_AUTHENTIC_KEY = "eGgfhshrvZANxKGXHKfaGK3YBWcXOgYN";
                                     });
                                 });
                                 reqMods.forEach(function (mod) {
-                                    if (configModMap[mod] && willReqMods.indexOf(configModMap[mod]) === -1) {
-                                        willReqMods.push(configModMap[mod]);
+                                    if (configModMap[mod]) {
+                                        if (willReqMods.indexOf(configModMap[mod]) === -1) {
+                                            willReqMods.push(configModMap[mod]);
+                                        }
                                     } else {
                                         willReqMods.push(mod);
                                     }
