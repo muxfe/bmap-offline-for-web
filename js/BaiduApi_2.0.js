@@ -5,8 +5,8 @@
      */
     var config = {
         enable: false, // main switch
-        host: 'http://localhost/', // local server host
-        path: 'bmap-offline-for-web/', // static resources path (relative host root path)
+        host: '', // local server host
+        path: '', // static resources path (relative host root path)
         tilePath: 'tiles/tile', // tile pics resources path (relative host root path)
         satellitePath: 'tiles/it', // satellite pics resources path (relative host root path)
         roadPath: 'tiles/road', // satellite street pics resources path (relative host root path)
