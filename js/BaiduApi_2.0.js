@@ -2856,7 +2856,7 @@ window.BMAP_AUTHENTIC_KEY = "eGgfhshrvZANxKGXHKfaGK3YBWcXOgYN";
                                     }
                                 });
                                 willReqMods.forEach(function (mod) {
-                                    pa(e.gG.XP + '/' + mod + '.js');
+                                    pa("getmodules/" + mod + '.js');
                                 });
                             } else if (a.length > 0) {
                                 pa(e.gG.XP + "&mod=" + a.join(","));
