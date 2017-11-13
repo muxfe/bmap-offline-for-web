@@ -5,8 +5,8 @@
      */
     var config = {
         enable: false, // main switch
-        host: 'http://localhost/', // local server host
-        path: 'bmap-offline-for-web/', // static resources path (relative host root path)
+        host: '', // local server host
+        path: '', // static resources path (relative host root path)
         tilePath: 'tiles/tile', // tile pics resources path (relative host root path)
         satellitePath: 'tiles/it', // satellite pics resources path (relative host root path)
         roadPath: 'tiles/road', // satellite street pics resources path (relative host root path)
@@ -1542,7 +1542,8 @@ window.BMAP_AUTHENTIC_KEY = "eGgfhshrvZANxKGXHKfaGK3YBWcXOgYN";
      */
     (function (C) {
         if (C.enable) {
-            z.ma = C.host + C.path + "/";
+            z.ma = C.host + C.path;
+            if (z.ma) z.ma += "/";
         } else {
             z.ma = z.url.proto + ("2" == z.Ny ? z.url.domain.main_domain_cdn.other[0] : z.url.domain.main_domain_cdn.baidu[0]) + "/";
         }
@@ -2849,14 +2850,18 @@ window.BMAP_AUTHENTIC_KEY = "eGgfhshrvZANxKGXHKfaGK3YBWcXOgYN";
                                     });
                                 });
                                 reqMods.forEach(function (mod) {
-                                    if (configModMap[mod] && willReqMods.indexOf(configModMap[mod]) === -1) {
-                                        willReqMods.push(configModMap[mod]);
+                                    if (configModMap[mod]) {
+                                        if (willReqMods.indexOf(configModMap[mod]) === -1) {
+                                            willReqMods.push(configModMap[mod]);
+                                        }
                                     } else {
                                         willReqMods.push(mod);
                                     }
                                 });
                                 willReqMods.forEach(function (mod) {
-                                    pa(e.gG.XP + '/' + mod + '.js');
+                                    var url = C.host + C.path;
+                                    if (url) url += "/";
+                                    pa(url + "getmodules/" + mod + '.js');
                                 });
                             } else if (a.length > 0) {
                                 pa(e.gG.XP + "&mod=" + a.join(","));
