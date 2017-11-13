@@ -1542,7 +1542,8 @@ window.BMAP_AUTHENTIC_KEY = "eGgfhshrvZANxKGXHKfaGK3YBWcXOgYN";
      */
     (function (C) {
         if (C.enable) {
-            z.ma = C.host + C.path + "/";
+            z.ma = C.host + C.path;
+            if (z.ma) z.ma += "/";
         } else {
             z.ma = z.url.proto + ("2" == z.Ny ? z.url.domain.main_domain_cdn.other[0] : z.url.domain.main_domain_cdn.baidu[0]) + "/";
         }
@@ -2856,7 +2857,9 @@ window.BMAP_AUTHENTIC_KEY = "eGgfhshrvZANxKGXHKfaGK3YBWcXOgYN";
                                     }
                                 });
                                 willReqMods.forEach(function (mod) {
-                                    pa("getmodules/" + mod + '.js');
+                                    var url = C.host + C.path;
+                                    if (url) url += "/";
+                                    pa(url + "getmodules/" + mod + '.js');
                                 });
                             } else if (a.length > 0) {
                                 pa(e.gG.XP + "&mod=" + a.join(","));
