@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="git" content="https://github.com/muxfe/bmap-offline-for-web" />
+    <meta name="author" content="https://github.com/muxfe" />
+    <meta name="keywords" content="BMap,bmap,offline,web,tile,baidu" />
+    <title>百度地图Web离线版 - Demo</title>
+    <link rel="stylesheet" type="text/css" href="css/BMap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/DrawingManager_1.4.css"/>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        #container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body onload="init()">
+    <div id="container"></div>
+
+    <script>
+        window.__BMAP_EXTRA_CONFIG__ = {
+            enable: true,
+            host: 'http://localhost/', // exmaple in nginx container
+            path: 'bmap-offline-for-web/',
+            tilePath: 'tiles/tile',
+            satellitePath: 'tiles/it',
+            roadPath: 'tiles/road'
+        };
+    </script>
+    <script type="text/javascript" src="js/BaiduApi_2.0.js"></script>
+    <script type="text/javascript" src="js/DrawingManager_1.4.js"></script>
+    <script type="text/javascript">
+        var map;
+        function init() {
+            map = new BMap.Map("container", {
+                mapType: BMAP_NORMAL_MAP,
+                minZoom: 19,
+                maxZoom: 19
+            });
+            var point = new BMap.Point(108.923451, 34.236572);
+            map.centerAndZoom(point, 19);
+            map.addControl(new BMap.NavigationControl());
+            map.enableScrollWheelZoom();
+            map.addControl(new BMap.MapTypeControl({
+                mapTypes:[
+                    BMAP_NORMAL_MAP,
+                    BMAP_HYBRID_MAP
+                ],
+                anchor: BMAP_ANCHOR_BOTTOM_RIGHT
+            }));
+
+            const styleOptions = {
+                strokeColor: 'blue',
+                fillColor: 'blue',
+                strokeWeight: 3,
+                strokeDasharray: 'none',
+                strokeOpacity: 0.2,
+                fillOpacity: 0.1,
+                strokeStyle: 'solid',
+            }
+            new BMapLib.DrawingManager(map, {
+                isOpen: false,
+                enableDrawingTool: true,
+                drawingToolOptions: {
+                    anchor: BMAP_ANCHOR_TOP_RIGHT,
+                    offset: new BMap.Size(5, 5),
+                    drawingModes: [
+                        BMAP_DRAWING_CIRCLE,
+                        BMAP_DRAWING_RECTANGLE,
+                    ],
+                },
+                circleOptions: styleOptions,
+                polygonOptions: styleOptions,
+                rectangleOptions: styleOptions,
+            })
+        }
+    </script>
+</body>
+</html>
