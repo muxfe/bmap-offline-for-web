@@ -21,8 +21,8 @@ custom config before load `BaiduApi_2.0.js`:
 ```js
 window.__BMAP_EXTRA_CONFIG__ = {
     enable: true,
-    host: 'http://localhost/', // exmaple in nginx container
-    path: 'bmap-offline-for-web/',
+    host: '', // exmaple in nginx container
+    path: '',
     tilePath: 'tiles/tile',
     satellitePath: 'tiles/it',
     roadPath: 'tiles/road'
@@ -37,17 +37,17 @@ window.__BMAP_EXTRA_CONFIG__ = {
     enable: false,
     // 部署离线地图的服务器地址 (deploy bmap-offline server host)
     host: '',
-    // 静态资源路径，相对于 host
+    // 静态资源路径，相对于 [host]/
     // (static resources path (relative host root path))
     path: '',
-    // 瓦片图资源路径，相对于 host 或 tileHost
-    // (tile pics resources path (relative host or tileHost root path))
+    // 瓦片图资源路径，相对于 [host]/[path]/
+    // (tile pics resources path)
     tilePath: 'tiles/tile',
-    // 卫星图资源路径，相对于 host 或 tileHost
-    // (satellite pics resources path (relative host or tileHost root path))
+    // 卫星图资源路径，相对于 [host]/[path]/
+    // (satellite pics resources path)
     satellitePath: 'tiles/it',
-    // 混合地图中的路网图资源路径，相对于 host 或 tileHost
-    // (satellite street pics resources path (relative host root path))
+    // 混合地图中的路网图资源路径，相对于 [host]/[path]/
+    // (satellite street pics resources path)
     roadPath: 'tiles/road',
     // 瓦片图时间戳 (tile updated date)
     tileUdt: '20170927',
@@ -56,7 +56,7 @@ window.__BMAP_EXTRA_CONFIG__ = {
     // 混合地图中的路网图时间戳 (satellite street updated date)
     roadUdt: '20170927',
     // 离线化的功能模块 js 文件
-    // (localized modules (path is [host][path][getmodules]/))
+    // (localized modules (path is [host]/[path]/[getmodules]/[mod].js))
     modules: [
         'map,scommon,mapclick,oppc,newvectordrawlib,style,tile,navictrl',
         'canvablepath,common,symbol,marker,copyrightctrl',
