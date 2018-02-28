@@ -30,8 +30,8 @@
     <script>
         window.__BMAP_EXTRA_CONFIG__ = {
             enable: true,
-            host: 'http://localhost/', // exmaple in nginx container
-            path: 'bmap-offline-for-web/',
+            host: '', // exmaple in nginx container
+            path: '',
             tilePath: 'tiles/tile',
             satellitePath: 'tiles/it',
             roadPath: 'tiles/road'
@@ -39,6 +39,7 @@
     </script>
     <script type="text/javascript" src="js/BaiduApi_2.0.js"></script>
     <script type="text/javascript" src="js/DrawingManager_1.4.js"></script>
+    <script type="text/javascript" src="js/CurveLine_1.5.min.js"></script>
     <script type="text/javascript">
         var map;
         function init() {
@@ -83,6 +84,14 @@
                 polygonOptions: styleOptions,
                 rectangleOptions: styleOptions,
             })
+
+            // curve line
+            var point1 = new BMap.Point(108.922517,34.240008);
+            var point2 = new BMap.Point(108.926308,34.239232);
+            var point3 = new BMap.Point(108.923945,34.236822);
+            var points = [point1, point2, point3];
+            var curve = new BMapLib.CurveLine(points, {strokeColor: 'blue', strokeWeight: 5, strokeOpacity: 0.5});
+            map.addOverlay(curve);
         }
     </script>
 </body>
